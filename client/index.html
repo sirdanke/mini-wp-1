@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- vuetify-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+
+    <!-- goole signin-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="105866137621-h75rrfjhjnugpv691e8anfhu0v8ucvet.apps.googleusercontent.com">
+
+    <!-- vue js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="./assets/index.css">
+
+    <!-- axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- swal-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- wysiwyg-->
+    <link rel="stylesheet" href="/vueWysiwyg.css">
+    <!-- vueinputtag-->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-input-tag"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+
+    <title>my mini wp</title>
+
+</head>
+
+<body>
+    <div id="app">
+
+        
+            
+        <login-page
+            v-if="isLogin == false"
+            :islogin="isLogin"
+            @success-login="successLogin">
+        </login-page>
+
+        <main-page
+            @navigate-to-profile="currentPage = 'profile'"
+            @read-article="readArticle"
+            v-if="isLogin == true"
+            :current-page="currentPage"
+            :all-articles="allArticles">
+        </main-page>
+        <user-dashboard
+            @back-to-home="home"
+            @edit-article="editArticle"
+            @delete-article="deleteArticle"
+            @create-new-article="createNewArticle"
+            :is-loading="isLoading"
+            v-if="isLogin == true && currentPage =='profile'"
+            :all-articles="allArticles"
+            >
+        </user-dashboard>
+        
+        <read-article
+            v-if="currentPage == 'read'"
+            :selected-article="selectedArticle"
+            @back-to-home="home"
+            @navigate-to-profile="currentPage = 'profile'">
+        </read-article>
+            
+
+    </div>
+
+    </div>
+
+
+</body>
+<!-- vuetify-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+<script src="/vueWysiwyg.js"></script>
+<script src="./component/userDashboard.js"></script>
+<script src="./component/editArticle.js"></script>
+<script src="./component/readArticle.js"></script>
+<script src="./component/inputTag.js"></script>
+<script src="./component/userDashboardSidenav.js"></script>
+<script src="./component/navbarHome.js"></script>
+<script src="./component/allArticle.js"></script>
+<script src="./component/userForm.js"></script>
+<script src="./component/loginPage.js"></script>
+<script src="./component/article-form.js"></script>
+<script src="./component/mainpage.js"></script>
+
+<script src="index.js"></script>
+
+</html>
